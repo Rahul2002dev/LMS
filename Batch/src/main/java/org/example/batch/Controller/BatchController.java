@@ -4,10 +4,7 @@ import org.example.batch.DTO.BatchDTO;
 import org.example.batch.Service.BatchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/batches")
@@ -17,9 +14,21 @@ public class BatchController {
     private BatchService batchService;
 
 
+    @PostMapping
+    public ResponseEntity<BatchDTO> createBatch(@RequestBody BatchDTO batchDTO){
+        BatchDTO bat = batchService.postBatch(batchDTO);
+        return ResponseEntity.ok().body(bat);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<BatchDTO> getBatchWithDetails(@PathVariable Long id) {
         BatchDTO batchDTO = batchService.getBatchById(id);
+        return ResponseEntity.ok(batchDTO);
+    }
+
+    @GetMapping("/student/{studentId}")
+    public ResponseEntity<BatchDTO> getBatchByStudentId(@PathVariable Long studentId) {
+        BatchDTO batchDTO = batchService.getBatchByStudentId(studentId);
         return ResponseEntity.ok(batchDTO);
     }
 }

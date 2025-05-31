@@ -1,20 +1,16 @@
 package org.example.batch.DTO;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class BatchDTO {
-    private Long batchId;
-    private String batchName;
-    private StudentDTo student;
-    private InstructorDTO instructor;
-    private CouseDTO course;
+    private Long id;
+    private String name;
+    private Long studentId;
+    private Long instructorId;
+    private Long courseId;
 //    private List<Schedule> schedules;
 //    private List<Attendance> attendances;
 }

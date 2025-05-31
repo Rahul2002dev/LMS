@@ -10,6 +10,7 @@ public class CourseMapper {
         if (course == null) return null;
 
         return CourseDTO.builder()
+                .studentId(course.getStudentId())
                 .id(course.getId())
                 .title(course.getTitle())
                 .description(course.getDescription())
@@ -21,6 +22,7 @@ public class CourseMapper {
         if (dto == null) return null;
 
         return Course.builder()
+                .studentId(dto.getStudentId())
                 .id(dto.getId())
                 .title(dto.getTitle())
                 .description(dto.getDescription())
@@ -31,6 +33,7 @@ public class CourseMapper {
     public void updateEntity(CourseDTO dto, Course entity) {
         if (dto == null || entity == null) return;
 
+        entity.setStudentId(dto.getStudentId());
         entity.setTitle(dto.getTitle());
         entity.setDescription(dto.getDescription());
         entity.setDurationInHours(dto.getDurationInHours());

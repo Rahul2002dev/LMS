@@ -2,54 +2,53 @@ package org.example.instructor.service;
 
 import org.example.instructor.dto.InstructorDTO;
 import org.example.instructor.entity.Instructor;
-import org.example.instructor.mapper.InstructorMapper;
 import org.example.instructor.repository.InstructorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class InstructorService {
+
     @Autowired
     private InstructorRepository instructorRepository;
 
-    @Autowired
-    private InstructorMapper instructorMapper;
-
     public InstructorDTO createInstructor(InstructorDTO instructorDTO) {
-        Instructor instructor = instructorMapper.toEntity(instructorDTO);
-        Instructor saved = instructorRepository.save(instructor);
-        return instructorMapper.toDTO(saved);
-    }
+        Instructor instructor = new Instructor();
+        instructor.setName(instructorDTO.getName());
+        instructor.setEmployeeId(instructorDTO.getEmployeeId());
+        instructor.setEmail(instructorDTO.getEmail());
+        instructor.setPhone(instructorDTO.getPhone());
+        instructor.setCourse(instructorDTO.getCourse());
 
-    public List<InstructorDTO> getAllInstructors() {
-        List<Instructor> instructors = instructorRepository.findAll();
-        return instructors.stream()
-                .map(instructorMapper::toDTO)
-                .collect(Collectors.toList());
+        Instructor saved = instructorRepository.save(instructor);
+
+        InstructorDTO dto = new InstructorDTO();
+        dto.setId(saved.getId());
+        dto.setName(saved.getName());
+        dto.setEmployeeId(saved.getEmployeeId());
+        dto.setEmail(saved.getEmail());
+        dto.setPhone(saved.getPhone());
+        dto.setCourse(saved.getCourse());
+
+        return dto;
     }
 
     public Optional<InstructorDTO> getInstructorById(Long id) {
-        return instructorRepository.findById(id)
-                .map(instructorMapper::toDTO);
+        Optional<Instructor> optional = instructorRepository.findById(id);
+        if (optional.isPresent()) {
+            Instructor instructor = optional.get();
+            InstructorDTO dto = new InstructorDTO();
+            dto.setId(instructor.getId());
+            dto.setName(instructor.getName());
+            dto.setEmployeeId(instructor.getEmployeeId());
+            dto.setEmail(instructor.getEmail());
+            dto.setPhone(instructor.getPhone());
+            dto.setCourse(instructor.getCourse());
+            return Optional.of(dto);
+        } else {
+            return Optional.empty();
+        }
     }
-
-    public Optional<InstructorDTO> updateInstructor(Long id, InstructorDTO instructorDTO) {
-        return instructorRepository.findById(id).map(existing -> {
-            instructorMapper.updateEntity(instructorDTO, existing);
-            Instructor updated = instructorRepository.save(existing);
-            return instructorMapper.toDTO(updated);
-        });
-    }
-
-    public boolean deleteInstructor(Long id) {
-        return instructorRepository.findById(id).map(instructor -> {
-            instructorRepository.delete(instructor);
-            return true;
-        }).orElse(false);
-    }
-
 }

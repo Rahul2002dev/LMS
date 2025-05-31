@@ -24,11 +24,11 @@ public class InstructorController {
         return new ResponseEntity<>(created, HttpStatus.CREATED);
     }
 
-    @GetMapping("/get/all")
-    public ResponseEntity<List<InstructorDTO>> getAllInstructors() {
-        List<InstructorDTO> instructors = instructorService.getAllInstructors();
-        return ResponseEntity.ok(instructors);
-    }
+//    @GetMapping("/get/all")
+//    public ResponseEntity<List<InstructorDTO>> getAllInstructors() {
+//        List<InstructorDTO> instructors = instructorService.getAllInstructors();
+//        return ResponseEntity.ok(instructors);
+//    }
 
     @GetMapping("/get/{id}")
     public ResponseEntity<InstructorDTO> getInstructorById(@PathVariable Long id) {
@@ -37,18 +37,18 @@ public class InstructorController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<InstructorDTO> updateInstructor(@PathVariable Long id,
-                                                          @Valid @RequestBody InstructorDTO instructorDTO) {
-        Optional<InstructorDTO> updatedOpt = instructorService.updateInstructor(id, instructorDTO);
-        return updatedOpt.map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteInstructor(@PathVariable Long id) {
-        boolean deleted = instructorService.deleteInstructor(id);
-        if (deleted) return ResponseEntity.noContent().build();
-        else return ResponseEntity.notFound().build();
-    }
+//    @PutMapping("/update/{id}")
+//    public ResponseEntity<InstructorDTO> updateInstructor(@PathVariable Long id,
+//                                                          @Valid @RequestBody InstructorDTO instructorDTO) {
+//        Optional<InstructorDTO> updatedOpt = instructorService.updateInstructor(id, instructorDTO);
+//        return updatedOpt.map(ResponseEntity::ok)
+//                .orElseGet(() -> ResponseEntity.notFound().build());
+//    }
+//
+//    @DeleteMapping("/{id}")
+//    public ResponseEntity<Void> deleteInstructor(@PathVariable Long id) {
+//        boolean deleted = instructorService.deleteInstructor(id);
+//        if (deleted) return ResponseEntity.noContent().build();
+//        else return ResponseEntity.notFound().build();
+//    }
 }

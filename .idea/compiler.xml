@@ -10,35 +10,61 @@
         <module name="Api-Gateway" />
         <module name="eureka-server" />
       </profile>
-      <profile name="Annotation profile for Content" enabled="true">
+      <profile name="Annotation profile for instructor" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.30/lombok-1.18.30.jar" />
         </processorPath>
-        <module name="course" />
-        <module name="Student" />
         <module name="instructor" />
-        <module name="user" />
-        <module name="Content" />
       </profile>
-      <profile name="Annotation profile for Batch" enabled="true">
+      <profile name="Annotation profile for Reporting" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.30/lombok-1.18.30.jar" />
+        </processorPath>
+        <module name="Reporting" />
+      </profile>
+      <profile name="Annotation profile for Notification" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
+        </processorPath>
+        <module name="Notification" />
+        <module name="Exam" />
+      </profile>
+      <profile name="Annotation profile for course" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
         </processorPath>
+        <module name="course" />
+        <module name="Student" />
+        <module name="user" />
         <module name="Batch" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Content" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Api-Gateway" options="-parameters" />
       <module name="Batch" options="-parameters" />
       <module name="Content" options="-parameters" />
+      <module name="Exam" options="-parameters" />
+      <module name="Notification" options="-parameters" />
+      <module name="Reporting" options="-parameters" />
       <module name="Student" options="-parameters" />
       <module name="course" options="-parameters" />
       <module name="eureka-server" options="-parameters" />

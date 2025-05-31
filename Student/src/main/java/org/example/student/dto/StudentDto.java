@@ -1,17 +1,15 @@
 package org.example.student.dto;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-@Setter
-@Getter
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class StudentDto {
-    private long id;
-
-    private long User_id;
+    private long userId;
     private String firstName;
     private String lastName;
-
     private String batch;
-    private String Course;
-    private String Result;
+    private String course;
+    private String result;
 }

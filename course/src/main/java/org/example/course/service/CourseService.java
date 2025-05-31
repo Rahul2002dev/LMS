@@ -26,6 +26,13 @@ public class CourseService {
             return courseMapper.toDTO(savedCourse);
         }
 
+    public List<CourseDTO> getCoursesByStudentId(Long studentId) {
+        List<Course> courses = courseRepository.findByStudentId(studentId);
+        return courses.stream()
+                .map(courseMapper::toDTO)
+                .collect(Collectors.toList());
+    }
+
         public List<CourseDTO> getAllCourses() {
             List<Course> courses = courseRepository.findAll();
             return courses.stream()

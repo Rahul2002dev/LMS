@@ -32,6 +32,11 @@ public class CourseController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/student/{studentId}")
+    public List<CourseDTO> getCoursesByStudentId(@PathVariable Long studentId) {
+        return courseService.getCoursesByStudentId(studentId);
+    }
+
     @PutMapping("/update/{id}")
     public ResponseEntity<CourseDTO> updateCourse(@PathVariable Long id, @RequestBody CourseDTO courseDTO) {
         Optional<CourseDTO> updated = courseService.updateCourse(id, courseDTO);

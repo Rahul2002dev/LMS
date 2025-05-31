@@ -1,7 +1,7 @@
 package org.example.student.controller;
 import org.example.student.dto.StudentDto;
+import org.example.student.dto.StudentPofileDTO;
 import org.example.student.entity.Student;
-import org.example.student.repository.StudentRepository;
 import org.example.student.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +14,12 @@ public class StudentController {
 
     @Autowired
     private StudentService studentService;
+
+
+    @GetMapping("/profile/{studentId}")
+    public ResponseEntity<StudentPofileDTO> getStudentProfile(@PathVariable Long studentId) {
+        return ResponseEntity.ok(studentService.getStudentFullProfile(studentId));
+    }
 
     @PostMapping
     public ResponseEntity<Student> createstudent(@RequestBody StudentDto dto) {

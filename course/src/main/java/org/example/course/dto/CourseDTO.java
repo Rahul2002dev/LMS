@@ -1,6 +1,7 @@
 package org.example.course.dto;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -14,6 +15,10 @@ import lombok.NoArgsConstructor;
 @Builder
 public class CourseDTO {
     private Long id;
+
+
+    @NotNull
+    private Long studentId;
 
     @NotBlank
     @Size(max = 120)
