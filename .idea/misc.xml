@@ -15,11 +15,13 @@
         <option value="$PROJECT_DIR$/Reporting/pom.xml" />
         <option value="$PROJECT_DIR$/Notification/pom.xml" />
         <option value="$PROJECT_DIR$/Exam/pom.xml" />
+        <option value="$PROJECT_DIR$/Payment/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/Content/pom.xml" />
+        <option value="$PROJECT_DIR$/Payment/pom.xml" />
       </set>
     </option>
   </component>

@@ -55,6 +55,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Content" target="17" />
+      <module name="Payment" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -64,6 +65,7 @@
       <module name="Content" options="-parameters" />
       <module name="Exam" options="-parameters" />
       <module name="Notification" options="-parameters" />
+      <module name="Payment" options="-parameters" />
       <module name="Reporting" options="-parameters" />
       <module name="Student" options="-parameters" />
       <module name="course" options="-parameters" />
